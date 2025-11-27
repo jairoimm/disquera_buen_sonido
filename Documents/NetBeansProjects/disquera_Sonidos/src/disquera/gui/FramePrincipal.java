@@ -2,7 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
+
 package disquera.gui;
+
+
+import java.awt.Dimension; 
+import java.awt.Toolkit;
 
 /**
  *
@@ -30,71 +35,85 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuDisco = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
-        jMenuItem9 = new javax.swing.JMenuItem();
-        jMenuItem10 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
+        jMenuItemAgregarDisco = new javax.swing.JMenuItem();
+        jMenuItemModificarDisco = new javax.swing.JMenuItem();
+        jMenuItemEliminarDisco = new javax.swing.JMenuItem();
+        jMenuItemListarDisco = new javax.swing.JMenuItem();
+        jMenuItemBuscarDisco = new javax.swing.JMenuItem();
+        jMenuCancion = new javax.swing.JMenu();
+        jMenuItemAgregarCancion = new javax.swing.JMenuItem();
+        jMenuItemModificarCancion = new javax.swing.JMenuItem();
+        jMenuItemEliminarCancion = new javax.swing.JMenuItem();
+        jMenuItemListarCanciones = new javax.swing.JMenuItem();
+        jMenuItemBuscarCancion = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Archivo");
         jMenuBar1.add(jMenu1);
 
-        jMenu2.setText("Editar");
+        jMenuDisco.setText("Editar");
+        jMenuDisco.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+                jMenuDiscoMenuSelected(evt);
+            }
+        });
 
         jMenu3.setText("Disco");
 
-        jMenuItem2.setText("Agregar");
-        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
-        jMenu3.add(jMenuItem2);
+        jMenuItemAgregarDisco.setText("Agregar");
+        jMenuItemAgregarDisco.addActionListener(this::jMenuItemAgregarDiscoActionPerformed);
+        jMenu3.add(jMenuItemAgregarDisco);
 
-        jMenuItem1.setText("Modificar");
-        jMenu3.add(jMenuItem1);
+        jMenuItemModificarDisco.setText("Modificar");
+        jMenuItemModificarDisco.addActionListener(this::jMenuItemModificarDiscoActionPerformed);
+        jMenu3.add(jMenuItemModificarDisco);
 
-        jMenuItem3.setText("Eliminar");
-        jMenu3.add(jMenuItem3);
+        jMenuItemEliminarDisco.setText("Eliminar");
+        jMenuItemEliminarDisco.addActionListener(this::jMenuItemEliminarDiscoActionPerformed);
+        jMenu3.add(jMenuItemEliminarDisco);
 
-        jMenuItem4.setText("Listar");
-        jMenu3.add(jMenuItem4);
+        jMenuItemListarDisco.setText("Listar");
+        jMenuItemListarDisco.addActionListener(this::jMenuItemListarDiscoActionPerformed);
+        jMenu3.add(jMenuItemListarDisco);
 
-        jMenuItem5.setText("Buscar");
-        jMenu3.add(jMenuItem5);
+        jMenuItemBuscarDisco.setText("Buscar");
+        jMenuItemBuscarDisco.addActionListener(this::jMenuItemBuscarDiscoActionPerformed);
+        jMenu3.add(jMenuItemBuscarDisco);
 
-        jMenu2.add(jMenu3);
+        jMenuDisco.add(jMenu3);
 
-        jMenu4.setText("Cancion");
+        jMenuCancion.setText("Cancion");
 
-        jMenuItem6.setText("Agregar");
-        jMenu4.add(jMenuItem6);
+        jMenuItemAgregarCancion.setText("Agregar");
+        jMenuItemAgregarCancion.addActionListener(this::jMenuItemAgregarCancionActionPerformed);
+        jMenuCancion.add(jMenuItemAgregarCancion);
 
-        jMenuItem7.setText("Agregar");
-        jMenu4.add(jMenuItem7);
+        jMenuItemModificarCancion.setText("Modificar");
+        jMenuItemModificarCancion.addActionListener(this::jMenuItemModificarCancionActionPerformed);
+        jMenuCancion.add(jMenuItemModificarCancion);
 
-        jMenuItem8.setText("Modificar");
-        jMenu4.add(jMenuItem8);
+        jMenuItemEliminarCancion.setText("Eliminar");
+        jMenuItemEliminarCancion.addActionListener(this::jMenuItemEliminarCancionActionPerformed);
+        jMenuCancion.add(jMenuItemEliminarCancion);
 
-        jMenuItem9.setText("Eliminar");
-        jMenu4.add(jMenuItem9);
+        jMenuItemListarCanciones.setText("Listar");
+        jMenuItemListarCanciones.addActionListener(this::jMenuItemListarCancionesActionPerformed);
+        jMenuCancion.add(jMenuItemListarCanciones);
 
-        jMenuItem10.setText("Listar");
-        jMenu4.add(jMenuItem10);
+        jMenuItemBuscarCancion.setText("Buscar");
+        jMenuItemBuscarCancion.addActionListener(this::jMenuItemBuscarCancionActionPerformed);
+        jMenuCancion.add(jMenuItemBuscarCancion);
 
-        jMenuItem11.setText("Buscar");
-        jMenu4.add(jMenuItem11);
+        jMenuDisco.add(jMenuCancion);
 
-        jMenu2.add(jMenu4);
-
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuDisco);
 
         setJMenuBar(jMenuBar1);
 
@@ -112,19 +131,68 @@ public class FramePrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void jMenuItemAgregarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarDiscoActionPerformed
+        FrmIngresoDisco frm = new FrmIngresoDisco();
+        
+        frm.setLocationRelativeTo(null); 
+        frm.setVisible(true);          
+        
+    }//GEN-LAST:event_jMenuItemAgregarDiscoActionPerformed
+
+    private void jMenuItemModificarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarCancionActionPerformed
+        new FrmModificarCancion().setLocationRelativeTo(null); 
+        new FrmModificarCancion().setVisible(true);
+    }//GEN-LAST:event_jMenuItemModificarCancionActionPerformed
+
+    private void jMenuDiscoMenuSelected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenuDiscoMenuSelected
+
+    }//GEN-LAST:event_jMenuDiscoMenuSelected
+
+    private void jMenuItemModificarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemModificarDiscoActionPerformed
+        new FrmModificarDisco().setLocationRelativeTo(null); 
+        new FrmModificarDisco().setVisible(true);
+    }//GEN-LAST:event_jMenuItemModificarDiscoActionPerformed
+
+    private void jMenuItemEliminarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarDiscoActionPerformed
+        new FrmEliminarDisco().setLocationRelativeTo(null); 
+        new FrmEliminarDisco().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEliminarDiscoActionPerformed
+
+    private void jMenuItemListarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarDiscoActionPerformed
+        new FrmListarDiscos().setLocationRelativeTo(null); 
+        new FrmListarDiscos().setVisible(true);
+    }//GEN-LAST:event_jMenuItemListarDiscoActionPerformed
+
+    private void jMenuItemBuscarDiscoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarDiscoActionPerformed
+        new FrmBuscarDisco().setLocationRelativeTo(null); 
+        new FrmBuscarDisco().setVisible(true);
+    }//GEN-LAST:event_jMenuItemBuscarDiscoActionPerformed
+
+    private void jMenuItemAgregarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAgregarCancionActionPerformed
+        new FrmIngresoCancion().setLocationRelativeTo(null); 
+        new FrmIngresoCancion().setVisible(true);
+    }//GEN-LAST:event_jMenuItemAgregarCancionActionPerformed
+
+    private void jMenuItemEliminarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemEliminarCancionActionPerformed
+        new FrmEliminarCancion().setLocationRelativeTo(null); 
+        new FrmEliminarCancion().setVisible(true);
+    }//GEN-LAST:event_jMenuItemEliminarCancionActionPerformed
+
+    private void jMenuItemListarCancionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemListarCancionesActionPerformed
+        new FrmListarCanciones().setLocationRelativeTo(null); 
+        new FrmListarCanciones().setVisible(true);
+    }//GEN-LAST:event_jMenuItemListarCancionesActionPerformed
+
+    private void jMenuItemBuscarCancionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemBuscarCancionActionPerformed
+        new FrmBuscarCancion().setLocationRelativeTo(null); 
+        new FrmBuscarCancion().setVisible(true);
+    }//GEN-LAST:event_jMenuItemBuscarCancionActionPerformed
 
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-        public void run() {
-            new FramePrincipal().setVisible(true);
-        }
-    });
+    
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -148,20 +216,19 @@ public class FramePrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
-    private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JMenu jMenuCancion;
+    private javax.swing.JMenu jMenuDisco;
+    private javax.swing.JMenuItem jMenuItemAgregarCancion;
+    private javax.swing.JMenuItem jMenuItemAgregarDisco;
+    private javax.swing.JMenuItem jMenuItemBuscarCancion;
+    private javax.swing.JMenuItem jMenuItemBuscarDisco;
+    private javax.swing.JMenuItem jMenuItemEliminarCancion;
+    private javax.swing.JMenuItem jMenuItemEliminarDisco;
+    private javax.swing.JMenuItem jMenuItemListarCanciones;
+    private javax.swing.JMenuItem jMenuItemListarDisco;
+    private javax.swing.JMenuItem jMenuItemModificarCancion;
+    private javax.swing.JMenuItem jMenuItemModificarDisco;
     // End of variables declaration//GEN-END:variables
 }
